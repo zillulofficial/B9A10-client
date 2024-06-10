@@ -3,6 +3,7 @@ import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const {createUser}= useContext(AuthContext)
@@ -12,18 +13,36 @@ const Register = () => {
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password)
+        // console.log(email, password)
+        if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
+            Swal.fire({
+                title: 'OOPS!',
+                text: 'Password is week',
+                icon: 'warning',
+                confirmButtonText: 'Okay'
+            })
+            return
+        }
+
         createUser(email,password)
-        .then(result=>console.log(result.user))
+        .then(result=>{
+            Swal.fire({
+                title: 'Congrats!',
+                text: 'Registered successfully',
+                icon: 'success',
+                confirmButtonText: 'Okay'
+            })
+            console.log(result.user)
+        })
         .catch(error=>console.log(error))
     }
     return (
         <div>
             <div className="flex flex-col md:flex-row items-center">
                 <div>
-                    <img className="w-[2000px]" src="https://i.postimg.cc/2jdV2Vmg/bg3.jpg" alt="" />
+                    <img className="md:w-[2000px] mt-16 md:mt-0" src="https://i.postimg.cc/2jdV2Vmg/bg3.jpg" alt="" />
                 </div>
-                <div className="hero min-h-screen ">
+                <div className="hero md:min-h-screen ">
                     <div className="hero-content ">
                         <div className="card shrink-0 w-full bg-base-100">
                             <form onSubmit={handleSubmit} className="card-body">
@@ -33,6 +52,10 @@ const Register = () => {
                                 </div>
                                 <div className="form-control">
                                     <input type="email" name="email" placeholder="Email" className="input bg-slate-100 mb-2"
+                                    />
+                                </div>
+                                <div className="form-control">
+                                    <input type="text" name="PhotoURL" placeholder="PhotoURL" className="input bg-slate-100 mb-2"
                                     />
                                 </div>
                                 <div className="form-control">

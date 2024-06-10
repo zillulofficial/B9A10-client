@@ -53,13 +53,13 @@ const Login = () => {
     }
     return (
         <div>
-            <div className="flex flex-col md:flex-row items-center">
+            <div className="flex flex-col md:flex-row items-center justify-center">
                 <div>
-                    <img className="w-[2000px]" src="https://i.postimg.cc/fTBkQpVK/bg2.jpg" alt="" />
+                    <img className="md:w-[2000px] mt-16 md:mt-0" src="https://i.postimg.cc/fTBkQpVK/bg2.jpg" alt="" />
                 </div>
-                <div className="hero min-h-screen ">
+                <div className="hero md:min-h-screen ">
                     <div className="hero-content ">
-                        <div className="card shrink-0 w-full bg-base-100">
+                        <div className=" shrink-0 w-full bg-base-100">
                             <form onSubmit={handleSubmit} className="card-body">
                                 <div>
                                     <h3 className="text-2xl text-[#3b3b3b] roboto font-bold mb-6">Login into account</h3>
