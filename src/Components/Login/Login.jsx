@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { login, googleLogIn, facebookLogIn } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state || '/';
 
     const [showPassword, setShowPassword] = useState(false)
     const handleSubmit = e => {
@@ -13,6 +19,37 @@ const Login = () => {
         const email = form.email.value
         const password = form.password.value
         console.log(email, password)
+        login(email, password)
+        .then((result) => {
+            if(result.user){
+                navigate(from)
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Logged in successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Okay'
+                })
+            }
+            console.log(result)
+        })
+        .catch(() => {
+            Swal.fire({
+                title: 'error!',
+                text: 'There is an error',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            })
+        })
+    }
+
+    const handleSocialSignIn = (socialProvider) => {
+        socialProvider()
+            .then(result => {
+                if (result.user) {
+                    navigate(from)
+                }
+            })
+            .catch(error => console.log(error))
     }
     return (
         <div>

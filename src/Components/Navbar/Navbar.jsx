@@ -1,16 +1,23 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
-    const navLinks= <>
-    <NavLink to="/"><li><a>Home</a></li></NavLink>
-    <NavLink to="/allCraft"><li><a>All Arts & Crafts</a></li></NavLink>
-    <NavLink to="/addCraft"><li><a>Add Craft Item</a></li></NavLink>
-    <NavLink to="/myCraft"><li><a>My Art&Craft List</a></li></NavLink>
-    
+    const { user, logout }= useContext(AuthContext)
+
+    const navLinks = <>
+        <NavLink to="/"><li><a>Home</a></li></NavLink>
+        <NavLink to="/allCraft"><li><a>All Arts & Crafts</a></li></NavLink>
+        <NavLink to="/addCraft"><li><a>Add Craft Item</a></li></NavLink>
+        <NavLink to="/myCraft"><li><a>My Art&Craft List</a></li></NavLink>
     </>
+    const handleLogout=()=>{
+        
+    }
+
     return (
-        <div>
-            <div className="navbar bg-base-100">
+        <div className="relative">
+            <div className="navbar fixed top-0 left-0 right-0 bg-slate-50">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +35,23 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                <Link to="/register"><button className="btn">Register</button></Link>
+                    {
+                        user ? <>
+                            <div className="navbar-end flex items-center gap-3">
+                                <div className="dropdown dropdown-end dropdown-hover">
+                                    <div tabIndex={0} role="button" className=" m-1"><img className="w-10 rounded-full" src={user.photoURL} alt="" /></div>
+                                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                        <p>{user.email}</p>
+                                    </ul>
+                                </div>
+                                <button onClick={handleLogout} className="btn text-[#1abc9c] hover:bg-[#1abc9c66] hover:text-white border-none">Logout</button>
+                            </div>
+                        </>
+                            :
+                            <div className="navbar-end flex justify-end items-center gap-3">
+                                <Link to="/login"><button className="btn text-[#1abc9c] hover:bg-[#1abc9c66] hover:text-white border-none">Login</button></Link>
+                            </div>
+                    }
                 </div>
             </div>
         </div>

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+    const {createUser}= useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false)
     const handleSubmit = e => {
         e.preventDefault()
@@ -11,6 +13,9 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
         console.log(email, password)
+        createUser(email,password)
+        .then(result=>console.log(result.user))
+        .catch(error=>console.log(error))
     }
     return (
         <div>
