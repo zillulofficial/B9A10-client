@@ -13,13 +13,13 @@ const Navbar = () => {
     </>
     const handleLogout = () => {
         logout()
-        .then()
-        .catch(error => console.error(error))
+            .then()
+            .catch(error => console.error(error))
     }
 
     return (
-        <div className="relative">
-            <div className="navbar fixed top-0 left-0 right-0 bg-slate-50">
+        <div className=" bg-slate-200 bg-opacity-80 w-full shadow-sm">
+            <div className="navbar container mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
