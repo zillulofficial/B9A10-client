@@ -42,12 +42,12 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div className="form-control mt-6 mb-4">
-                                    <button className="btn text-white bg-[#3e362e] hover:bg-[#3e362e66] border-none text-lg">Register</button>
+                                    <button className="btn text-white bg-[#ff5638cb] hover:bg-[#ff563849] border-none text-lg">Register</button>
                                 </div>
 
                                 <div className="flex justify-between items-center">
                                     <p>Already Registered?</p>
-                                    <Link to="/login"><button className=" text-black hover:bg-[#3e362e33] px-4 py-2 rounded-full border-nones font-bold">Sign in Now</button></Link>
+                                    <Link to="/login"><button className=" text-black hover:bg-[#ff563849] px-4 py-2 rounded-full border-nones font-bold">Login Now</button></Link>
                                 </div>
                             </form>
                         </div>
