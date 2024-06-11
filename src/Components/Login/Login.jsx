@@ -55,7 +55,7 @@ const Login = () => {
         <div>
             <div className="flex flex-col md:flex-row items-center justify-center">
                 <div>
-                    <img className="md:w-[2000px] mt-16 md:mt-0" src="https://i.postimg.cc/fTBkQpVK/bg2.jpg" alt="" />
+                    <img className="md:w-[2000px] mt-16 md:mt-0 " src="https://i.postimg.cc/fTBkQpVK/bg2.jpg" alt="" />
                 </div>
                 <div className="hero md:min-h-screen ">
                     <div className="hero-content ">

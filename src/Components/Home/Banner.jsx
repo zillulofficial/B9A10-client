@@ -4,7 +4,7 @@ const Banner = () => {
 
     return (
         <div>
-            <div className="carousel w-full h-[600px] mb-12">
+            <div className="carousel w-full h-[600px] mb-20">
                 <div id="slide1" className="carousel-item relative w-full bg-gray-100">
                     <div className="flex flex-col py-6 md:py-0 md:flex-row justify-between items-center  container mx-auto">
                         <div>

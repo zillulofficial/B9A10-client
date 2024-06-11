@@ -75,7 +75,7 @@ const Register = () => {
 
                                 <div className="flex justify-between items-center">
                                     <p>Already Registered?</p>
-                                    <Link to="/login"><button className=" text-black hover:bg-[#ff563849] px-4 py-2 rounded-full border-nones font-bold">Login Now</button></Link>
+                                    <Link to="/login"><button className=" text-black hover:underline hover:underline-offset-4 hover:text-[#ff3838cb] px-4 py-2 rounded-full border-nones font-bold">Login Now</button></Link>
                                 </div>
                             </form>
                         </div>
