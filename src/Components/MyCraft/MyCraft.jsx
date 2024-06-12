@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { FaStar } from "react-icons/fa6";
+import { TbCurrencyTaka } from "react-icons/tb";
 
 const MyCraft = () => {
     const { user } = useContext(AuthContext)
@@ -30,8 +32,8 @@ const MyCraft = () => {
                                     <h1 className="text-3xl Rancho font-bold mb-4">{product.subName}</h1>
                                     <p className="text-slate-500 mb-3">{product.details}</p>
                                     <div className="flex justify-between items-center mb-2">
-                                        <p className="roboto">{product.price} tk</p>
-                                        <p className="roboto">{product.rating}</p>
+                                        <p className="roboto flex items-center gap-1">{product.price} <TbCurrencyTaka className="text-lg text-green-700"></TbCurrencyTaka></p>
+                                        <p className="roboto flex items-center gap-1 justify-center"><FaStar className="text-orange-600"></FaStar>{product.rating}</p>
                                     </div>
                                     <div className="mb-6">
                                         <p className="roboto mb-2">Availability: {product.stock}</p>
