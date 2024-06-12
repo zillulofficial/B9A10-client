@@ -130,7 +130,7 @@ const AddProduct = () => {
                         </div>
                     </div>
                     <div>
-                        <input className="btn Rancho text-2xl text-[#331A15] bg-[#D2B48C] w-full mt-7 hover:bg-[#D2B48C60] border-none" type="submit" value="Add a Product" />
+                        <input className="btn Rancho text-2xl border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d] w-full mt-7 " type="submit" value="Add a Product" />
                     </div>
                 </form>
             </div>

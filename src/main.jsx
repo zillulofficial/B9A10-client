@@ -12,6 +12,8 @@ import Register from './Components/Register/Register.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import ErrorPage from './ErrorPage/ErrorPage.jsx';
 import AddProduct from './Components/AddProduct/AddProduct.jsx';
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
+import MyCraft from './Components/MyCraft/MyCraft.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addCraft",
-        element: <AddProduct></AddProduct>
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+      },
+      {
+        path: "/myCraft",
+        element: <MyCraft></MyCraft>
       }
     ]
   },
