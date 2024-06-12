@@ -46,6 +46,7 @@ const Login = () => {
         socialProvider()
             .then(result => {
                 if (result.user) {
+                    console.log(result.user)
                     navigate(from)
                 }
             })

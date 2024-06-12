@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
+    const {user} = useContext(AuthContext)
+
     const handleAddProduct = e => {
         e.preventDefault()
         const form = e.target
@@ -12,13 +17,15 @@ const AddProduct = () => {
         const customization= form.customization.value
         const stock= form.stock.value
         const photoURL= form.photoURL.value
+        const email= user.email
+        const userName= user.displayName
         
         const product= {
-            name, subName, price, rating, time, details, customization, stock, photoURL
+            name, subName, price, rating, time, details, customization, stock, photoURL, email, userName
         }
         console.log(product)
 
-        fetch(`http://localhost:5000/addProduct`, {
+        fetch("http://localhost:5000/addProduct", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -26,7 +33,17 @@ const AddProduct = () => {
             body: JSON.stringify(product)
         })
         .then(res=> res.json())
-        .then(data=>console.log(data))
+        .then(data=>{
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Congratulations!',
+                    text: 'Item added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Okay'
+                })
+            }
+        })
     }
     return (
         <div>
