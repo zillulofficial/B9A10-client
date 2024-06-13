@@ -16,6 +16,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 import MyCraft from './Components/MyCraft/MyCraft.jsx';
 import UpdateProduct from './Components/UpdateProduct/UpdateProduct.jsx';
 import AllCrafts from './Components/AllCrafts/AllCrafts.jsx';
+import ViewDetails from './Components/ViewDetails/ViewDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
         path: "/updateProduct/:id",
         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
         loader:({params})=> fetch(`http://localhost:5000/allProduct/${params.id}`)
+      },
+      {
+        path: "/viewDetails/:id",
+        element: <ViewDetails></ViewDetails>,
+        loader: ()=> fetch('http://localhost:5000/allProduct')
       }
     ]
   },

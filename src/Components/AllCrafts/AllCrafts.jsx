@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa6";
 import { TbCurrencyTaka } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const AllCrafts = () => {
     const [allItems, setAllItems] = useState([])
@@ -43,7 +44,7 @@ const AllCrafts = () => {
                                     </td>
                                     <td className="">{item.email}</td>
                                     <th className=" flex justify-end">
-                                        <button className="btn border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d]">View Details</button>
+                                        <Link to={`/viewDetails/${item._id}`}><button className="btn border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d]">View Details</button></Link>
                                     </th>
                                 </tr>
                             </tbody>
