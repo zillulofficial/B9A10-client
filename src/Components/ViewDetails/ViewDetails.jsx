@@ -11,7 +11,7 @@ const ViewDetails = () => {
     console.log(data);
     return (
         <div>
-            <div className="mb-24 mt-8 container mx-auto">
+            <div className="mb-16 mt-16 container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
                     <div className="lg:col-span-2">
                         <img className="rounded-lg" src={data.photoURL} alt="" />

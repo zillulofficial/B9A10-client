@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/myCraft",
-        element: <MyCraft></MyCraft>,
+        element: <PrivateRoute><MyCraft></MyCraft></PrivateRoute>,
         loader: ()=> fetch('http://localhost:5000/allProduct')
       },
       {
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewDetails/:id",
-        element: <ViewDetails></ViewDetails>,
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
         loader: ()=> fetch('http://localhost:5000/allProduct')
       }
     ]

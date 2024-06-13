@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaStar } from "react-icons/fa6";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { MdDelete, MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 
 const MyCraft = () => {
+    const loadedProducts= useLoaderData()
     const { user } = useContext(AuthContext)
     const [products, setProducts] = useState([])
 
@@ -19,38 +20,38 @@ const MyCraft = () => {
             })
     }, [user])
 
-    // const handleDelete = id => {
-    //     console.log(id)
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!"
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
+    const handleDelete = id => {
+        console.log(id)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-    //             fetch(`http://localhost:5000/users/${id}`,{
-    //                 method:"DELETE"
-    //             })
-    //                 .then(res => res.json())
-    //                 .then(data => {
-    //                     console.log(data)
-    //                     if(data.deletedCount>0){
-    //                         Swal.fire({
-    //                             title: "Deleted!",
-    //                             text: "Your file has been deleted.",
-    //                             icon: "success"
-    //                         });
-    //                         const del= users.filter(use=> use._id!== id)
-    //                         setUsers(del)
-    //                     }
-    //                 })
-    //         }
-    //     });
-    // }
+                fetch(`http://localhost:5000/allProduct/${id}`,{
+                    method:"DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if(data.deletedCount>0){
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            const del= loadedProducts.filter(data=> data._id!== id)
+                            setProducts(del)
+                        }
+                    })
+            }
+        });
+    }
 
     return (
         <div>
@@ -78,7 +79,7 @@ const MyCraft = () => {
                                         <p className="roboto">Customizable: {product.customization}</p>
                                     </div>
                                     <div className="flex justify-between">
-                                        <button className="btn border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d]">View Details</button>
+                                        <Link to={`/viewDetails/${product._id}`}><button className="btn border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d]">View Details</button></Link>
                                         <div>
                                             <Link to={`/updateProduct/${product._id}`}><button className='text-lg p-2 rounded-md bg-[#3C393B] text-white'><MdEdit></MdEdit></button></Link>
                                             <button onClick={() => handleDelete(product._id)} className='text-lg p-2 rounded-md bg-[#EA4744] text-white ml-4'><MdDelete></MdDelete></button>
