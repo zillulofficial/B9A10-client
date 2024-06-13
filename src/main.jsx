@@ -14,6 +14,7 @@ import ErrorPage from './ErrorPage/ErrorPage.jsx';
 import AddProduct from './Components/AddProduct/AddProduct.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 import MyCraft from './Components/MyCraft/MyCraft.jsx';
+import UpdateProduct from './Components/UpdateProduct/UpdateProduct.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/myCraft",
-        element: <PrivateRoute><MyCraft></MyCraft></PrivateRoute>
+        element: <MyCraft></MyCraft>,
+        loader: ()=> fetch('http://localhost:5000/allProduct')
+      },
+      {
+        path: "/updateProduct/:id",
+        element: <UpdateProduct></UpdateProduct>,
+        loader:({params})=> fetch(`http://localhost:5000/allProduct/${params.id}`)
       }
     ]
   },

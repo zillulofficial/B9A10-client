@@ -2,6 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaStar } from "react-icons/fa6";
 import { TbCurrencyTaka } from "react-icons/tb";
+import { Link } from "react-router-dom";
+import { MdDelete, MdEdit } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const MyCraft = () => {
     const { user } = useContext(AuthContext)
@@ -15,6 +18,40 @@ const MyCraft = () => {
                 setProducts(data)
             })
     }, [user])
+
+    // const handleDelete = id => {
+    //     console.log(id)
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+
+    //             fetch(`http://localhost:5000/users/${id}`,{
+    //                 method:"DELETE"
+    //             })
+    //                 .then(res => res.json())
+    //                 .then(data => {
+    //                     console.log(data)
+    //                     if(data.deletedCount>0){
+    //                         Swal.fire({
+    //                             title: "Deleted!",
+    //                             text: "Your file has been deleted.",
+    //                             icon: "success"
+    //                         });
+    //                         const del= users.filter(use=> use._id!== id)
+    //                         setUsers(del)
+    //                     }
+    //                 })
+    //         }
+    //     });
+    // }
+
     return (
         <div>
             <div className="text-center mb-16 mt-16">
@@ -35,11 +72,19 @@ const MyCraft = () => {
                                         <p className="roboto flex items-center gap-1">{product.price} <TbCurrencyTaka className="text-lg text-green-700"></TbCurrencyTaka></p>
                                         <p className="roboto flex items-center gap-1 justify-center"><FaStar className="text-orange-600"></FaStar>{product.rating}</p>
                                     </div>
-                                    <div className="mb-6">
-                                        <p className="roboto mb-2">Availability: {product.stock}</p>
+                                    <p className="roboto mb-2">Availability: {product.stock}</p>
+                                    <div className="mb-6 flex justify-between items-center">
                                         <p className="roboto">Preparation time: {product.time}</p>
+                                        <p className="roboto">Customizable: {product.customization}</p>
                                     </div>
-                                    <button className="btn border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d]">View Details</button>
+                                    <div className="flex justify-between">
+                                        <button className="btn border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d]">View Details</button>
+                                        <div>
+                                            <Link to={`/updateProduct/${product._id}`}><button className='text-lg p-2 rounded-md bg-[#3C393B] text-white'><MdEdit></MdEdit></button></Link>
+                                            <button onClick={() => handleDelete(product._id)} className='text-lg p-2 rounded-md bg-[#EA4744] text-white ml-4'><MdDelete></MdDelete></button>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
