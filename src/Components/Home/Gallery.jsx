@@ -1,7 +1,7 @@
 
 const Gallery = () => {
     return (
-        <div className="mb-20">
+        <div className="mb-24">
             <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mx-auto container">
                 <div>
                     <img className="transition-all hover:cursor-pointer hover:scale-95 duration-500 ease" src="https://i.postimg.cc/9QYVp3y2/gallery.jpg" alt="" />

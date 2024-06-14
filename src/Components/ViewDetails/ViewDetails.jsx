@@ -17,8 +17,8 @@ const ViewDetails = () => {
                         <img className="rounded-lg" src={data.photoURL} alt="" />
                     </div>
                     <div className="p-5 space-y-5">
-                        <h2 className="text-4xl mb-4 Rancho text-[#406335]">{data.subName}</h2>
-                        <p className="font-semibold text-[#4f7942] text-lg  border-dashed border-b-2 pb-2">{data.name}</p>
+                        <h2 className="text-5xl mb-4 Rancho text-[#406335]">{data.name}</h2>
+                        <p className="font-semibold text-[#4f7942] text-lg  border-dashed border-b-2 pb-2">{data.subName}</p>
                         <div className="flex justify-between items-center mb-3">
                             <p className="flex gap-1 items-center">{data.price}<BsCurrencyDollar className="text-[#4f7942]"></BsCurrencyDollar></p>
                             <p className="flex gap-1 items-center text-[#4f7942c4] font-bold roboto justify-end"><FaStar></FaStar>{data.rating}</p>

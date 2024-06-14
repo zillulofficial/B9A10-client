@@ -67,7 +67,7 @@ const MyCraft = () => {
                             <div className="hero-content flex-col lg:flex-row">
                                 <img src={product.photoURL} className="w-80 max-h-72 rounded-lg shadow-2xl" />
                                 <div>
-                                    <h1 className="text-3xl Rancho font-bold mb-4">{product.subName}</h1>
+                                    <h1 className="text-3xl Rancho font-bold mb-4">{product.name}</h1>
                                     <p className="text-slate-500 mb-3">{product.details}</p>
                                     <div className="flex justify-between items-center mb-2">
                                         <p className="roboto flex items-center gap-1">{product.price} <TbCurrencyTaka className="text-lg text-green-700"></TbCurrencyTaka></p>
