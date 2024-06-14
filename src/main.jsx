@@ -17,6 +17,7 @@ import MyCraft from './Components/MyCraft/MyCraft.jsx';
 import UpdateProduct from './Components/UpdateProduct/UpdateProduct.jsx';
 import AllCrafts from './Components/AllCrafts/AllCrafts.jsx';
 import ViewDetails from './Components/ViewDetails/ViewDetails.jsx';
+import CategorySection from './Components/CategorySection/CategorySection.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         path: "/viewDetails/:id",
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
         loader: ()=> fetch('http://localhost:5000/allProduct')
+      },
+      {
+        path: "/categories/:category",
+        element: <CategorySection></CategorySection>
       }
     ]
   },
