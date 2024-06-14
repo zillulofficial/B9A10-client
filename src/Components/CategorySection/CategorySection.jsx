@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CategorySection = () => {
     const [categoryInfo, setCategoryInfo] = useState([])
@@ -42,6 +42,10 @@ const CategorySection = () => {
                                     <div className="mb-6 flex justify-between items-center">
                                         <p className="roboto">Preparation time: {cat.time}</p>
                                         <p className="roboto">Customizable: {cat.customization}</p>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <Link to={`/viewDetails/${cat._id}`}><button className="btn border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d]">View Details</button></Link>
+                                       
                                     </div>
                                 </div>
                             </div>
