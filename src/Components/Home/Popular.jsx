@@ -10,7 +10,7 @@ const Popular = () => {
                     home decor and jute crafts. <br className="hidden lg:block" />Discover the most loved pieces that blend
                     natural elegance and timeless design.</p>
             </div>
-            <div className="mb-24 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-10 ">
+            <div className="mb-36 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-10 ">
                 <Link to={`/categories/${"Jute_Home_Decoration"}`}>
                     <div className="w-56 transition-all hover:cursor-pointer hover:scale-95 duration-500 ease hover:bg-slate-100 mx-auto">
                         <img className="flex mx-auto mb-3" src="https://i.postimg.cc/ZnM8nZSS/Jute-Home-Decor.jpg" alt="" />
