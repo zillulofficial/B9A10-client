@@ -1,3 +1,4 @@
+import { Fade, Zoom } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const Popular = () => {
@@ -5,10 +6,12 @@ const Popular = () => {
     return (
         <div>
             <div className=" text-center mb-20">
+                <Zoom  cascade damping={0.1}>
                 <h3 className="Rancho text-5xl mb-4">Popular Choices</h3>
                 <p>Explore our Popular Choices at MapleWhisper.com, featuring customer favorites in wooden
                     home decor and jute crafts. <br className="hidden lg:block" />Discover the most loved pieces that blend
                     natural elegance and timeless design.</p>
+                </Zoom>
             </div>
             <div className="mb-36 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-10 ">
                 <Link to={`/categories/${"Jute_Home_Decoration"}`}>

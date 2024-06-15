@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
-    const [theme, setTheme]= useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem("theme", theme)
-        const localTheme= localStorage.getItem("theme")
+        const localTheme = localStorage.getItem("theme")
         document.querySelector('html').setAttribute('data-theme', localTheme)
     }, [theme])
 
@@ -24,11 +25,11 @@ const Navbar = () => {
             .catch(error => console.error(error))
     }
 
-    const handleToggle= e=>{
-        if(e.target.checked){
+    const handleToggle = e => {
+        if (e.target.checked) {
             setTheme("dark")
         }
-        else{
+        else {
             setTheme("light")
         }
     }
@@ -57,10 +58,12 @@ const Navbar = () => {
                         user ? <>
                             <div className="navbar-end flex items-center gap-3">
                                 <div className="dropdown dropdown-end dropdown-hover">
-                                    <div tabIndex={0} role="button" className=" m-1"><img className="w-10 rounded-full" src={user.photoURL} alt="" /></div>
-                                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                        <p>{user.email}</p>
-                                    </ul>
+                                    <div tabIndex={0} role="button" className=" m-1"><a className="my-anchor-element"><img className="w-10 rounded-full" src={user.photoURL} alt="" /></a></div>
+                                    <Tooltip anchorSelect=".my-anchor-element" place="left" className="bg-[#1abc9c66]">
+                                            <p>{user.email}</p>
+                                        {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                        </ul> */}
+                                    </Tooltip>
                                 </div>
                                 <button onClick={handleLogout} className="btn text-[#1abc9c] hover:bg-[#1abc9c66] hover:text-white border-none">Logout</button>
                             </div>
@@ -73,7 +76,7 @@ const Navbar = () => {
                     <label className="swap swap-rotate text-end ml-3">
 
                         {/* this hidden checkbox controls the state */}
-                        <input type="checkbox" onChange={handleToggle} checked={theme === "light" ? false: true}/>
+                        <input type="checkbox" onChange={handleToggle} checked={theme === "light" ? false : true} />
 
                         {/* sun icon */}
                         <svg className="swap-on fill-current w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" /></svg>

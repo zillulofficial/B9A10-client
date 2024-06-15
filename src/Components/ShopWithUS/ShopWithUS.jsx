@@ -3,6 +3,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { FaStar } from "react-icons/fa6";
+import { Fade, Zoom } from "react-awesome-reveal";
 
 const ShopWithUS = () => {
 
@@ -20,11 +21,13 @@ const ShopWithUS = () => {
     return (
         <div className="mb-32">
             <div className=" text-center mb-20">
-                <h3 className="Rancho text-3xl md:text-5xl mb-4">Shop With Us</h3>
-                <p>
-                    Welcome to MapleWhisper.com, where handcrafted wooden and jute decor meets exceptional craftsmanship and sustainability. Our curated collection offers unique,
-                    eco-friendly pieces <br className="hidden lg:block" />that add warmth, charm, and style to your home. Shop with us for beautiful, durable decor that makes your living space truly unique.
-                </p>
+                <Zoom cascade damping={0.1}>
+                    <h3 className="Rancho text-3xl md:text-5xl mb-4">Shop With Us</h3>
+                    <p>
+                        Welcome to MapleWhisper.com, where handcrafted wooden and jute decor meets exceptional craftsmanship and sustainability. Our curated collection offers unique,
+                        eco-friendly pieces <br className="hidden lg:block" />that add warmth, charm, and style to your home. Shop with us for beautiful, durable decor that makes your living space truly unique.
+                    </p>
+                </Zoom>
             </div>
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
                 {
@@ -46,7 +49,7 @@ const ShopWithUS = () => {
                                     </div>
                                     <div className="flex justify-between">
                                         <Link to={`/viewDetails/${product._id}`}><button className="btn border-none bg-[#4f7942b4] text-white hover:text-slate-400 hover:bg-[#4f79424d]">View Details</button></Link>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +58,7 @@ const ShopWithUS = () => {
                 }
             </div>
             <div className="text-center">
-            <Link to="/allCraft"><button className="border-none font-bold text-white hover:bg-[#1abc9c42] hover:text-white bg-slate-300 px-5 py-3">Show More</button></Link>
+                <Link to="/allCraft"><button className="border-none font-bold text-white hover:bg-[#1abc9c42] hover:text-white bg-slate-300 px-5 py-3">Show More</button></Link>
             </div>
         </div>
     );
