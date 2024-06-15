@@ -12,7 +12,7 @@ const MyCraft = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myCraft/${user?.email}`)
+        fetch(`https://b9-a10-server-ashy.vercel.app/myCraft/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -33,7 +33,7 @@ const MyCraft = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/allProduct/${id}`,{
+                fetch(`https://b9-a10-server-ashy.vercel.app/allProduct/${id}`,{
                     method:"DELETE"
                 })
                     .then(res => res.json())

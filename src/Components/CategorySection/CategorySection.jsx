@@ -10,7 +10,7 @@ const CategorySection = () => {
     console.log(category)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/categories/${category}`)
+        fetch(`https://b9-a10-server-ashy.vercel.app/categories/${category}`)
             .then(res => res.json())
             .then(data => {
                 setCategoryInfo(data);

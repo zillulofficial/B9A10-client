@@ -7,7 +7,7 @@ const AllCrafts = () => {
     const [allItems, setAllItems] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/allProduct/')
+        fetch('https://b9-a10-server-ashy.vercel.app/allProduct/')
             .then(res => res.json())
             .then(data => {
                 setAllItems(data)

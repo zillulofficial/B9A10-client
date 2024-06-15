@@ -27,7 +27,7 @@ const UpdateProduct = () => {
             name, subName, price, rating, time, details, customization, stock, photoURL, email, userName
         }
         console.log(product)
-        fetch(`http://localhost:5000/allProduct/${craft._id}`, {
+        fetch(`https://b9-a10-server-ashy.vercel.app/allProduct/${craft._id}`, {
             method: "PUT",
             headers:{
                 "content-type": "application/json"

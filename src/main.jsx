@@ -48,17 +48,17 @@ const router = createBrowserRouter([
       {
         path: "/myCraft",
         element: <PrivateRoute><MyCraft></MyCraft></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/allProduct')
+        loader: ()=> fetch('https://b9-a10-server-ashy.vercel.app/allProduct')
       },
       {
         path: "/updateProduct/:id",
         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-        loader:({params})=> fetch(`http://localhost:5000/allProduct/${params.id}`)
+        loader:({params})=> fetch(`https://b9-a10-server-ashy.vercel.app/allProduct/${params.id}`)
       },
       {
         path: "/viewDetails/:id",
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/allProduct')
+        loader: ()=> fetch('https://b9-a10-server-ashy.vercel.app/allProduct')
       },
       {
         path: "/categories/:category",

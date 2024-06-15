@@ -11,7 +11,7 @@ const ShopWithUS = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myCraft/thala@bashon.com`)
+        fetch(`https://b9-a10-server-ashy.vercel.app/myCraft/thala@bashon.com`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
